@@ -1,5 +1,5 @@
 const BaseController = require('./base');
-Notes = require('../model/Note');
+const Notes = require('../model/note');
 class NotesController extends BaseController{
 
     constructor(){

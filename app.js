@@ -53,7 +53,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json('error');
 });
 
-module.exports = app;
+
+var port = process.env.PORT || 8000;
+app.listen(port, function () {
+    console.log('App is running on ' +port);
+});

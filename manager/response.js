@@ -27,7 +27,7 @@ class ResponseManager{
         response.message = message;
         response.data = data;
         response.links = links;
-        res.status(code).json(data);
+        res.status(code).json(response);
     }
 
     static respondWithError(res, errorCode, message = "", links = []) {

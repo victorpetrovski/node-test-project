@@ -18,7 +18,13 @@ var NoteSchema = mongoose.Schema({
     _updated_at:{
         type : Date,
         default : Date.now
-    }
+    },
+    number : {
+        type : Number,
+        min : 5,
+        required: true
+    },
+    createdBy: [{ type: Schema.Types.String, ref:'_User'}]
 
 }, { collection: 'Note' , versionKey: false });
 
@@ -37,6 +43,8 @@ NoteSchema.pre('update', function (next, done) {
 NoteSchema.pre("save", function(next){
     // this._id is a string
     this.set("_id", mongoose.Types.ObjectId(this._id), {strict: false});
+
+    this.validat
     // this._id is still a string
     next();
 });
@@ -45,7 +53,7 @@ var Note = module.exports = mongoose.model("Note",NoteSchema);
 
 // Get Notes
 module.exports.getNotes = function (page = 0,callback) {
-    Note.find(callback).skip(page * page_limit).limit(page_limit);
+    Note.find(callback).populate('createdBy', '-password').skip(page * page_limit).limit(page_limit);
 };
 
 //Add Note

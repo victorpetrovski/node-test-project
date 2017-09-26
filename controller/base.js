@@ -1,7 +1,7 @@
 
 const BaseAutoBindClass = require('../base/autobind-base');
 const ResponseManager = require('../manager/response');
-
+const model = global.model = require(APP_MODEL_PATH);
 class BaseController extends BaseAutoBindClass{
 
     constructor(){

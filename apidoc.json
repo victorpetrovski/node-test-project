@@ -1,0 +1,8 @@
+{
+  "name": "Victor Personal API",
+  "version": "0.0.1",
+  "description": "API za da gi testirame sposobnostite na ovoj dzver",
+  "template": {
+    "forceLanguage": "en"
+  }
+}
